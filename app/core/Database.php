@@ -25,4 +25,21 @@ class Database
         }
         return false;
     }
+    public function get_row($query, $data = [])
+    {
+        $connection = $this->connect();
+
+        $stmnt = $connection->prepare($query);
+
+        $check = $stmnt->execute($data);
+        if($check)
+        {
+            $result = $stmnt->fetchAll(PDO::FETCH_ASSOC);
+            if(is_array($result) && count($result))
+            {
+                return $result[0];
+            }
+        }
+        return false;
+    }
 }

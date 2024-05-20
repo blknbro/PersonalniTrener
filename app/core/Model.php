@@ -2,10 +2,32 @@
 
 class Model extends Database
 {
-    function test()
+
+    protected $table = 'animals';
+    public function where($data, $data_not)
     {
-        $query = "SELECT * FROM adoptions";
-        $result = $this->query($query);
-        print_r($result);
+        $keys = array_keys($data);
+        $query = "SELECT * FROM $this->table where id = :id &&";
+        $this->query($query,['id'=>23]);
+    }
+
+    public function first($data)
+    {
+
+    }
+
+    public function insert($data)
+    {
+        
+    }
+
+    public function update($id, $data, $id_column = 'id')
+    {
+
+    }
+
+    public function delete($id, $id_column = 'id')
+    {
+
     }
 }
