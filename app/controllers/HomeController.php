@@ -5,8 +5,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $model = new Model();
-        $model->test();
+        $animal = new Animal();
+
+        print_r($animal->where(["id"=>3]));
 
         $this->view('home');
     }

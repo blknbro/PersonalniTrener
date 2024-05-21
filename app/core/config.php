@@ -6,7 +6,7 @@ if($_SERVER['SERVER_NAME'] === 'localhost'){
     define('USER',"root");
     define('HOST',"localhost");
     define('PASSWORD',"");
-    define('ROOT', 'http://localhost/MVCV2/public');
+    define('ROOT', 'http://localhost/ProjectMvc/mvc/public');
 }else{
     define('ROOT', 'https://www.website.com');
 }
