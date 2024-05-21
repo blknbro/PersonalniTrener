@@ -25,7 +25,7 @@
                 <a href="<?= ROOT?>/catalog">Katalog</a>
                 <a href="<?= ROOT?>/contact">Kontakt</a>
                 <a href="<?= ROOT?>/about">O nama</a>
-                <!--                <a href="--><?php //= $path ?><!--Admin/admin.php" style="font-weight: bold">Admin</a>-->
+                <a href="<?= ROOT?>/admin" style="font-weight: bold">Admin</a>
             </div>
             <div class="header-name">
                 <a href="<?= $_SERVER["REQUEST_URI"]?>">New hope</a>
