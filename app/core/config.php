@@ -10,3 +10,4 @@ if($_SERVER['SERVER_NAME'] === 'localhost'){
 }else{
     define('ROOT', 'https://www.website.com');
 }
+

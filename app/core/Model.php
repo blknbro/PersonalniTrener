@@ -4,6 +4,14 @@ class Model extends Database
 {
 
     protected $table = 'animals';
+
+    public function findAll()
+    {
+
+        $query = "SELECT * FROM $this->table";
+        return $this->query($query);
+
+    }
     public function where($data)
     {
         $keys = array_keys($data);
@@ -17,6 +25,13 @@ class Model extends Database
     }
     public function insert($data)
     {
+        if(!empty($this->allowedColumns)){
+            foreach($data as $key => $value){
+                if(!in_array($key,$this->allowedColumns)){
+                    unset($data[$key]);
+                }
+            }
+        }
         $keys = array_keys($data);
 
         $query = "INSERT INTO $this->table (".implode("," , $keys).") VALUES (:". implode(",:" , $keys).")";
@@ -29,6 +44,14 @@ class Model extends Database
 
     public function update($id, $data, $id_column = 'id')
     {
+        if(!empty($this->allowedColumns)){
+            foreach($data as $key => $value){
+                if(!in_array($key,$this->allowedColumns)){
+                    unset($data[$key]);
+                }
+            }
+        }
+
         $keys = array_keys($data);
         $query = "UPDATE $this->table SET ";
         foreach ($keys as $key) {
