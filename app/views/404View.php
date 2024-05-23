@@ -1,40 +1,44 @@
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="author" content="Kristijan Dulic"/>
-    <meta name="description" content="New hope - dom za udovljavanje pasa i macaka"/>
-    <meta name="robots" content="noindex"/>
-    <link href=<?=ROOT . "/assets/styles/style.css"?>  type="text/css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/styles/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;500;700;800&family=Roboto+Condensed:wght@100;200;300;400;500;700&display=swap"
-          rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <title>New hope</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FitForge</title>
 </head>
-<div class="page">
-    <header class="header-wrapper">
-        <div class="header">
-            <div class="header-links">
-                <a href="<?= ROOT?>">Katalog</a>
-                <a href="<?= ROOT?>/contact">Kontakt</a>
-                <a href="<?= ROOT?>/about">O nama</a>
-                <a href="<?= ROOT?>/admin" style="font-weight: bold">Admin</a>
-            </div>
-            <div class="header-name">
-                <a href="<?= ROOT?>">New hope</a>
+<body>
+<nav class="navbar navbar-expand-lg px-2 fs-5 border-body border-bottom dark fixed-top" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="<?=ROOT?>"><i class="bi fs-5 bi-building-fill"></i>FitForge</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav gap-2">
+                <li class="nav-items">
+                    <a class="nav-link" href="<?=ROOT?>/trainers">Trainers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=ROOT?>/trainings">Trainings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+            </ul>
+            <div class="navbar-nav ms-auto">
+                <a href="<?=ROOT?>/login" class="nav-link rounded fs-6" style="border: 1px solid #e5e5e5; color: #000; background-color: #f4f9fb">Login</a>
             </div>
         </div>
-    </header>
-    <body>
-
-    <p style="font-size: 46px; color: var(--secondary); margin-top: 24px; text-align: center">Uh oh! Page not found</p>
+    </div>
+</nav>
+    <p style="font-size: 46px; color: black; margin-top: 80px; text-align: center">Uh oh! Page not found</p>
 
     </body>
 </div>

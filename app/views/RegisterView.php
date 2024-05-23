@@ -23,10 +23,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav gap-2">
                 <li class="nav-items">
-                    <a class="nav-link" href="trainer.php">Trainers</a>
+                    <a class="nav-link" href="<?=ROOT?>/trainers">Trainers</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="trainings.php">Trainings</a>
+                    <a class="nav-link" href="<?=ROOT?>/trainings">Trainings</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Pricing</a>
