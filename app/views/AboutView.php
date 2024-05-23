@@ -22,7 +22,7 @@
     <header class="header-wrapper">
         <div class="header">
             <div class="header-links">
-                <a href="<?= ROOT?>/catalog">Katalog</a>
+                <a href="<?= ROOT?>">Katalog</a>
                 <a href="<?= ROOT?>/contact">Kontakt</a>
                 <a href="<?= ROOT?>/about">O nama</a>
                 <a href="<?= ROOT?>/admin" style="font-weight: bold">Admin</a>
@@ -74,3 +74,6 @@
             </div>
         </div>
     </main>
+    </body>
+</div>
+</html>
