@@ -1,79 +1,108 @@
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="author" content="Kristijan Dulic"/>
-    <meta name="description" content="New hope - dom za udovljavanje pasa i macaka"/>
-    <meta name="robots" content="noindex"/>
-    <link href=<?=ROOT . "/assets/styles/style.css"?>  type="text/css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="<?= ROOT ?>/assets/styles/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;500;700;800&family=Roboto+Condensed:wght@100;200;300;400;500;700&display=swap"
-          rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <title>New hope</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FitForge</title>
 </head>
-<div class="page">
-    <header class="header-wrapper">
-        <div class="header">
-            <div class="header-links">
-                <a href="<?= ROOT?>">Katalog</a>
-                <a href="<?= ROOT?>/contact">Kontakt</a>
-                <a href="<?= ROOT?>/about">O nama</a>
-                <a href="<?= ROOT?>/admin" style="font-weight: bold">Admin</a>
-            </div>
-            <div class="header-name">
-                <a href="<?= ROOT?>">New hope</a>
+<body>
+<nav class="navbar navbar-expand-lg px-2 fs-5 border-body border-bottom dark fixed-top" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="<?=ROOT?>"><i class="bi fs-5 bi-building-fill"></i>FitForge</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav gap-2">
+                <li class="nav-items">
+                    <a class="nav-link" href="trainer.php">Trainers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=ROOT?>/trainings">Trainings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+            </ul>
+            <div class="navbar-nav ms-auto">
+                <a href="<?=ROOT?>/login" class="nav-link rounded fs-6" style="border: 1px solid #e5e5e5; color: #000; background-color: #f4f9fb">Login</a>
             </div>
         </div>
-    </header>
-    <body>
-
-    <main class="main" style="align-items: flex-start">
-        <div class="catalog">
-            <form method="post" style="justify-content: center">
-                <input placeholder="Pretraga..." name="search" value=''>
-            </form>
-<!--            <div class="catalog-content">-->
-<!--                --><?php
-//                while ($animal = $result->fetch_assoc()) {
-//                    echo "
-//                <div class='animals-info' style='width: 100%'>
-//                <div class='animal-info' style='width: 100%'>
-//                <img src='Images/animals/${animal['photo']}' alt='Images/animals/${animal['photo']}' style='width: 100%; border-radius: 8px'>
-//                <p style='text-align: left'>{$animal['name']}</p>
-//                </div>
-//
-//
-//                <div class='adopt-main'>
-//                <form action='adopt.php' method='get'>
-//                <input type='hidden' value='{$animal['id']}' name='id'>
-//                <button class='button-adopt'>
-//                Udomi
-//                <svg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-home' width='24' height='24' viewBox='0 0 24 24' stroke-width='2' stroke='currentColor' fill='none' stroke-linecap='round' stroke-linejoin='round'>
-//  <path stroke='none' d='M0 0h24v24H0z' fill='none' />
-//  <path d='M5 12l-2 0l9 -9l9 9l-2 0' />
-//  <path d='M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7' />
-//  <path d='M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6' />
-//</svg>
-//                </div >
-//                </button >
-//                </form>
-//</div >
-//    ";
-//                }
-//                ?>
-<!--            </div>-->
+    </div>
+</nav>
+    <div class="container-fluid" id="main-page" style="background-image: url('<?= ROOT?>/assets/images/gym2.jpg');">
+        <div class="container fs-1 vh-100 d-flex flex-column justify-content-center gap-5">
+            <div class="container">
+                <p class="text-start" style="font-size: 56px;">Empower Your Body,<br><span style="font-weight: bold"> Unleash Your Greatness!</span>
+                </p>
+                <p class="fs-5">Welcome to FitForge, where fitness meets inspiration. Join us on a journey to
+                    greatness!</p>
+                <button type="button" class="btn btn-light fs-3 mt-5">Start Now <i
+                            class="bi bi-arrow-right text-dark"></i></button>
+            </div>
         </div>
 
-    </main>
+    </div>
+    <div class="container my-5">
+        <h1 class="text-dark text-center my-4">MEET OUR BEST TRAINERS</h1>
+        <div class="row gy-3">
+            <div class="col-lg-4 col-sm-12">
+                <div class="card p-2">
+                    <img src="<?= ROOT?> /assets/images/Trainers/jenna.jpg" class="trainer-img" alt="3">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Jenna Parker</h5>
+                        <p class="card-text text-dark">Jenna is a certified personal trainer with a passion for holistic
+                            fitness.Get ready to discover your inner strength with Jenna's empowering guidance.</p>
+                        <a href="#" class="btn btn-dark">Check out</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <div class="card p-2">
+                    <img src="<?= ROOT?>/assets/images/Trainers/max.jpg" class="trainer-img" alt="3">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Max Reynolds</h5>
+                        <p class="card-text text-dark">Max is an ex-athlete turned personal trainer, dedicated to
+                            helping clients push past their limits and achieve their fitness goals. Train with Max and
+                            unleash your full potential.</p>
+                        <a href="#" class="btn btn-dark">Check out</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <div class="card p-2">
+                    <img src="<?=ROOT?>/assets/images/Trainers/sarah.jpg" class="trainer-img" alt="3">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Sarah Nguyen</h5>
+                        <p class="card-text text-dark">Sarah is a dedicated fitness coach with a background in sports
+                            psychology. She believes in the power of mindset and motivation to fuel physical
+                            transformation. Join Sarah's sessions and embark on a journey of self-discovery and
+                            empowerment.</p>
+                        <a href="#" class="btn btn-dark">Check out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    </body>
-</div>
+<footer class="bg-dark py-5 mt-5">
+
+    <div class="container text-light text-center">
+        <p>&copy; 2024 Copyright by FitForge. All rights reserved.</p>
+    </div>
+</footer>
+
+
+
+
+
+</body>
 </html>
-

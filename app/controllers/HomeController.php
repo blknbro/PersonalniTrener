@@ -9,6 +9,7 @@ class HomeController extends Controller
         $animals = new Animal();
 
 
+        $animals->findAll();
 
 
         $this->view('home');
