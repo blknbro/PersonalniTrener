@@ -56,7 +56,7 @@
         <div class="row gy-3">
             <div class="col-lg-4 col-sm-12">
                 <div class="card p-2">
-                    <img src="<?= ROOT?> /assets/images/Trainers/jenna.jpg" class="trainer-img" alt="3">
+                    <img src="<?= ROOT?>/assets/images/Trainers/jenna.jpg" class="trainer-img" alt="3">
                     <div class="card-body text-center">
                         <h5 class="card-title">Jenna Parker</h5>
                         <p class="card-text text-dark">Jenna is a certified personal trainer with a passion for holistic

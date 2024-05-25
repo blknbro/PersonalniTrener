@@ -8,6 +8,6 @@ if($_SERVER['SERVER_NAME'] === 'localhost'){
     define('PASSWORD',"");
     define('ROOT', 'http://localhost/MVCV2/public');
 }else{
-    define('ROOT', 'https://nm.stud.vts.su.ac.rs/');
+    define('ROOT', 'https://nm.stud.vts.su.ac.rs');
 }
 
