@@ -41,6 +41,14 @@
 
 <div class="container d-flex min-vh-100 justify-content-center align-items-center">
         <form action="" method="post" class="w-100 p-5 mt-5 bg-dark rounded-4 shadow" style="max-width: 624px">
+            <?php if(!empty($err)):?>
+            <div class="alert alert-danger">
+                <?=
+                implode("<br>", $err)
+
+                ?>
+            </div>
+            <?php endif; ?>
             <h1 class="mb-4 text-center">Register</h1>
             <div class="mb-2 text-light form-floating">
                 <input type="text" name="name" id="name" placeholder="Name:" class="form-control">
@@ -67,7 +75,7 @@
                 <label for="passwdR" class="text-dark">Confirm password</label>
             </div>
             <div class="form-check form-switch mb-5 fs-5">
-                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <input class="form-check-input" type="checkbox" role="switch" name="type" id="flexSwitchCheckDefault">
                 <label class="form-check-label text-warning" for="flexSwitchCheckDefault">Trainer?</label>
             </div>
             <div class="d-grid">

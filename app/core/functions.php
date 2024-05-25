@@ -2,6 +2,6 @@
 
 function redirect($path)
 {
-    ROOT . "/" . $path;
+    header("Location:" . ROOT . "/" . $path);
     die;
 }

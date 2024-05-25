@@ -1,6 +1,10 @@
 <?php
 class Database
 {
+
+    /**
+     * @return PDO
+     */
     private function connect()
     {
         $string = "mysql:hostname=localhost;dbname=it";
@@ -30,7 +34,13 @@ class Database
         }
         return false;
     }
-    public function get_row($query, $data = [])
+
+    /**
+     * @param string $query
+     * @param array $data
+     * @return false|mixed
+     */
+    public function get_row(string $query,array $data = [])
     {
         $connection = $this->connect();
 
