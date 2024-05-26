@@ -3,7 +3,7 @@
 class Model extends Database
 {
 
-    protected $table = 'animals';
+    protected $table = 'users';
 
     public function findAll()
     {
@@ -12,10 +12,15 @@ class Model extends Database
         return $this->query($query);
 
     }
-    public function where($data)
+
+    /**
+     * @param $data
+     * @return bool|array
+     */
+    public function where($data): bool|array
     {
         $keys = array_keys($data);
-        $query = "SELECT * FROM $this->table where ";
+        $query = "SELECT * FROM $this->table WHERE ";
         foreach ($keys as $key) {
             $query .= $key . " = :" . $key ;
         }
@@ -23,7 +28,12 @@ class Model extends Database
         $result = $this->query($query,$data);
         return $result;
     }
-    public function insert($data)
+
+    /**
+     * @param $data
+     * @return false
+     */
+    public function insert($data): false
     {
         if(!empty($this->allowedColumns)){
             foreach($data as $key => $value){
@@ -42,7 +52,13 @@ class Model extends Database
 
     }
 
-    public function update($id, $data, $id_column = 'id')
+    /**
+     * @param $id
+     * @param $data
+     * @param $id_column
+     * @return false
+     */
+    public function update($id, $data, $id_column = 'id'): false
     {
         if(!empty($this->allowedColumns)){
             foreach($data as $key => $value){
@@ -60,14 +76,19 @@ class Model extends Database
 
 
         $query = trim($query,", ");
-        $query .= " WHERE $id_column = :$id_column";
+        $query .= " WHERE $id_column = :id_value";
 
-        $data[$id_column] = $id;
+        $data['id_value'] = $id;
         $this->query($query,$data);
         return false;
     }
 
-    public function delete($id, $id_column = 'id')
+    /**
+     * @param $id
+     * @param $id_column
+     * @return false
+     */
+    public function delete($id, $id_column = 'id'): false
     {
         $query = "DELETE FROM $this->table WHERE id = :id";
         $this->query($query,["id"=>$id]);

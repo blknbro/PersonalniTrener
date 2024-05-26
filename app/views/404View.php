@@ -33,7 +33,16 @@
                 </li>
             </ul>
             <div class="navbar-nav ms-auto">
-                <a href="<?=ROOT?>/login" class="nav-link rounded fs-6" style="border: 1px solid #e5e5e5; color: #000; background-color: #f4f9fb">Login</a>
+                <?php
+                if(isset($username) && $username !== "Guest"):
+                    echo "<span class='nav-link' style='cursor: default;'>Hi {$username}!</span>";
+                    ?>
+                    <a href="<?=ROOT?>/logout" class="nav-link rounded fs-6" style="border: 1px solid #e5e5e5; color: #000; background-color: #f4f9fb">Logout</a>
+                <?php
+                else:?>
+                    <a href="<?=ROOT?>/login" class="nav-link rounded fs-6" style="border: 1px solid #e5e5e5; color: #000; background-color: #f4f9fb">Login</a>
+                <?php endif;?>
+
             </div>
         </div>
     </div>

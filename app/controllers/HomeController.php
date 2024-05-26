@@ -5,7 +5,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $this->view('Home');
+        $data['username'] = empty($_SESSION['email']) ? "Guest" : $_SESSION["email"];
+        $data['id'] = empty($_SESSION['userId']) ? "" : $_SESSION['userId'];
+
+        $this->view('Home',$data);
     }
 
 }

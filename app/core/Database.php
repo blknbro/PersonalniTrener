@@ -2,7 +2,7 @@
 class Database
 {
 
-    /**
+    /**Make connection to database
      * @return PDO
      */
     private function connect()
@@ -12,7 +12,7 @@ class Database
         return $con;
     }
 
-    /**
+    /**Universal query
      * @param string $query
      * @param array $data
      * @return bool|array
@@ -40,7 +40,7 @@ class Database
      * @param array $data
      * @return false|mixed
      */
-    public function get_row(string $query,array $data = [])
+    public function getRow(string $query,array $data = [])
     {
         $connection = $this->connect();
 
