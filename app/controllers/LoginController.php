@@ -16,13 +16,18 @@ class LoginController extends Controller
                 $arr['email'] = $_POST['email'];
                 $row = $user->where($arr);
                 if ($row) {
-                    if (password_verify($_POST['passwd'], $row[0]['passwd'])) {
-                        $_SESSION['email'] = $row[0]['email'];
-                        $_SESSION['userId'] = $row[0]['id'];
-                        redirect("Home");
-                    } else
-                        $user->errors['passwd'] = "Wrong password.";
-                } else {
+                    if ($row[0]['active'] === 1) {
+                        if (password_verify($_POST['passwd'], $row[0]['passwd'])) {
+                            $_SESSION['email'] = $row[0]['email'];
+                            $_SESSION['userId'] = $row[0]['id'];
+                            redirect("Home");
+                        } else
+                            $user->errors['passwd'] = "Wrong password.";
+                    } else {
+                        $user->errors['email'] = "Email is not activated.";
+                    }
+                }
+                else{
                     $user->errors['email'] = "Email is not found.";
                 }
             }
