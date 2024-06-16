@@ -20,6 +20,7 @@ class LoginController extends Controller
                         if (password_verify($_POST['passwd'], $row[0]['passwd'])) {
                             $_SESSION['email'] = $row[0]['email'];
                             $_SESSION['userId'] = $row[0]['id'];
+                            $_SESSION['type'] = $row[0]['type'];
                             redirect("Home");
                         } else
                             $user->errors['passwd'] = "Wrong password.";

@@ -19,7 +19,8 @@ class User extends Model
         'token_expire',
         'active',
         'tokenR',
-        'tokenRExpire'
+        'tokenRExpire',
+        'bio'
     ];
 
     /**Validate register data

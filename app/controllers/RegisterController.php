@@ -7,7 +7,7 @@ class RegisterController extends Controller
         $data = [];
 
         if (isset($_SESSION['email']))
-            redirect("Home");
+            redirect("home");
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $user = new User();
@@ -25,6 +25,7 @@ class RegisterController extends Controller
                     if ($user->validate($_POST)) {
                         $_POST['passwd'] = password_hash($_POST['passwd'], PASSWORD_DEFAULT);
                         $user->insert($_POST);
+                        sendMail($_POST['email'],'activate', substr($_POST['token'],0,40));
                         redirect("login");
                     }else {
                         $user->errors['email'] = "Info not valid.";

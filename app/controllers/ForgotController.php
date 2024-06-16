@@ -17,6 +17,8 @@ class ForgotController extends Controller
                     $tokenR = createToken(40);
                     $tokenRExpire = (new DateTime())->add(new DateInterval('P1D'))->format('Y-m-d H:i:s');
                     $user->update($email, ['tokenR' => $tokenR, 'tokenRExpire' => $tokenRExpire], 'email');
+                    sendMail($email,'reset',substr($tokenR,0,40));
+                    redirect("home");
                 }else
                 {
                     $user->errors['email'] = "Invalid email format";

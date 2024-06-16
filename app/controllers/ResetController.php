@@ -21,11 +21,13 @@ class ResetController extends Controller
                     $user = new User();
                     $row = $user->where(['tokenR' => $token]);
                     if ($row) {
-                        $password = password_hash(trim($_POST['passwdR']), PASSWORD_DEFAULT);
-                        $row = $user->update($token, ['passwd' => $password, 'tokenR' => '', 'tokenRExpire' => ''], 'tokenR');
+                        if($row[0]['tokenRExpire'] > now()) {
+                            $password = password_hash(trim($_POST['passwdR']), PASSWORD_DEFAULT);
+                            $row = $user->update($token, ['passwd' => $password, 'tokenR' => '', 'tokenRExpire' => ''], 'tokenR');
 
-                        if (!$row) {
-                            redirect('login');
+                            if (!$row) {
+                                redirect('login');
+                            }
                         }
                     }else{
                         $user->errors['passwd'] = "Wrong token.";

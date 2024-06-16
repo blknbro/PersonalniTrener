@@ -14,30 +14,8 @@
     <title>FitForge</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg px-2 fs-5 border-body border-bottom dark fixed-top" data-bs-theme="dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="<?=ROOT?>"><i class="bi fs-5 bi-building-fill"></i>FitForge</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav gap-2">
-                <li class="nav-items">
-                    <a class="nav-link" href="<?=ROOT?>/trainers">Trainers</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?=ROOT?>/trainings">Trainings</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
-            </ul>
-            <div class="navbar-nav ms-auto">
-                <a href="<?=ROOT?>/login" class="nav-link rounded fs-6" style="border: 1px solid #e5e5e5; color: #000; background-color: #f4f9fb">Login</a>
-            </div>
-        </div>
-    </div>
-</nav>
+
+<?php require_once 'navbar.php'?>
 
 </div>
 <div class="container-fluid container-md d-flex min-vh-100 justify-content-center align-items-center">
