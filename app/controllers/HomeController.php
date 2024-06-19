@@ -46,7 +46,7 @@ class HomeController extends Controller
             }
 
 
-            redirect('/home/profile?id=' . $_SESSION['email']);
+            redirect('/home/profile?id=' . $_SESSION['email'] . "&s=1");
 
         }
 

@@ -18,6 +18,11 @@
 <?php require_once 'navbar.php'; ?>
 
 <div class="container align-items-center text-center mx-auto min-vh-100 p-5 bg-dark rounded-2 w-100" style="margin-top: 64px;">
+    <?php if(!empty($_GET['s'])):?>
+    <div class="alert alert-success">
+        Success!
+    </div>
+    <?php endif;?>
     <?php if (!isset($_SESSION['email']) || $info[0]['email'] !== $_SESSION['email']): ?>
         <div class="row align-items-center">
             <div class="col-md-8 d-flex flex-column gap-4">

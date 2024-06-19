@@ -20,7 +20,8 @@ class User extends Model
         'active',
         'tokenR',
         'tokenRExpire',
-        'bio'
+        'bio',
+        'permission',
     ];
 
     /**Validate register data

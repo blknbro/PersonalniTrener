@@ -17,13 +17,15 @@ require_once 'navbar.php' ?>
                     <button class="badge rounded-pill text-bg-warning filter fs-5">CrossFit</button>
                     <button class="badge rounded-pill text-bg-warning filter fs-5">Rehabilitation</button>
                 </div>
+                <?php if ($_SESSION['type'] === 'trainer' && $_SESSION['permission'] === 'approved'):?>
                 <div class="my-4">
                     <a href="<?= ROOT ?>/trainings/make">
-                        <button class="btn btn-dark" <? if ($_SESSION['type'] !== 'trainer') echo 'disabled'; ?><i class="bi bi-caret-right-fill"></i> Make
+                        <button class="btn btn-dark"><i class="bi bi-caret-right-fill"></i> Make
                             workout
                         </button>
                     </a>
                 </div>
+                <?php endif;?>
             </div>
         </div>
         <div class="container d-flex gap-4 flex-wrap mt-5 justify-content-start ">
@@ -105,4 +107,6 @@ require_once 'navbar.php' ?>
             </div>
         </div>
     </div>
+
+    <script src="<?= ROOT ?>/assets/scripts/search.js"></script>
 <?php require_once 'footer.php';

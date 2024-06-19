@@ -22,6 +22,7 @@ class LoginController extends Controller
                             $_SESSION['userId'] = $row[0]['id'];
                             $_SESSION['type'] = $row[0]['type'];
                             $_SESSION['name'] = $row[0]['name'];
+                            $_SESSION['permission'] = $row[0]['permission'];
                             redirect("Home");
                         } else
                             $user->errors['passwd'] = "Wrong password.";
