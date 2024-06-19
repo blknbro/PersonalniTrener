@@ -65,6 +65,12 @@ a{
 
 .train{
     min-height: 600px;
+    transition: 0.5s;
+}
+
+.train-hover:hover{
+    transform: scale(1.02);
+    z-index: 2;
 }
 
 .train-img{

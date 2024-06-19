@@ -21,7 +21,6 @@ class HomeController extends Controller
             $updatedValue = [
                 'name' => $_POST['name'],
                 'surname' => $_POST['surname'],
-                'email' => $_POST['email'],
                 'phone' => $_POST['phone'],
                 'bio' => $_POST['bio'],
             ];
@@ -29,7 +28,6 @@ class HomeController extends Controller
             $originalValues = [
                 'name' => $data['info'][0]['name'],
                 'surname' => $data['info'][0]['surname'],
-                'email' => $data['info'][0]['email'],
                 'phone' => $data['info'][0]['phone'],
                 'bio' => $data['info'][0]['bio'],
             ];
@@ -41,7 +39,9 @@ class HomeController extends Controller
             }
 
 
-            if(!empty($changes) && !empty($changes['bio'])){
+
+
+            if(!empty($changes)){
                 $user->update($_SESSION['email'], $changes, 'email');
             }
 

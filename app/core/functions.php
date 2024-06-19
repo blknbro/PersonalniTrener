@@ -54,7 +54,7 @@ function sendMail(string $email, string $action, $token)
         $mail->addAddress('duledule17113@gmail.com');
         $mail->isHTML(true);
         $mail->Subject = $action === 'activate' ? "Activate your account" : "Reset your password";
-        $mail->Body = ($action === 'activate') ? "<h1>To activate your account please click <a href='$link'>here</a>.</h1>" : "<h1>To reset your password please click <a href='$link'>here</a>.</h1>";
+        $mail->Body = ($action === 'activate') ? "<h1>Please activate your account</h1><br><p>To activate your account please click <a href='$link'>here</a>.</p>" : "<h1>Reset password</h1><p>To reset your password please click <a href='$link'>here</a>.</p>";
         $mail->AltBody = 'Došlo do još jednog neuspešnog prijavljivanja.';
         $mail->send();
     } catch (Exception $e) {

@@ -12,7 +12,7 @@
                 </li>
                 <?php if (isset($_SESSION['type']) && !empty($_SESSION['type'])): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= ROOT ?>/trainings">Trainings</a>
+                        <a class="nav-link" href="<?= ROOT ?>/trainings">Workouts</a>
                     </li>
                 <?php endif; ?>
                 <?php if (isset($_SESSION['type']) && !empty($_SESSION['type']) && $_SESSION['type'] === 'admin'): ?>

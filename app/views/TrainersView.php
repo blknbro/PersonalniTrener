@@ -21,7 +21,7 @@
 
 <?php require_once 'navbar.php'?>
 
-<div class="container d-flex flex-column justify-content-start min-vh-100 mt-5" style="padding-top: 64px">
+<div class="container d-flex flex-column flex-wrap justify-content-start min-vh-100 mt-5" style="padding-top: 64px">
     <h1 class="text-center text-dark">OUR TRAINERS</h1>
     <div class="container d-flex gap-4 flex-wrap mt-5 justify-content-center justify-content-md-start">
 
@@ -36,21 +36,10 @@
                         out</a>
                 </div>
             </div>
-
         <?php endforeach; ?>
-
-
     </div>
+
 
 </div>
 
-<footer class="bg-dark py-5 mt-5">
-
-    <div class="container text-light text-center">
-        <p>&copy; 2024 Copyright by FitForge. All rights reserved.</p>
-    </div>
-</footer>
-
-
-</body>
-</html>
+<?php require_once 'footer.php';

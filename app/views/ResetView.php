@@ -17,7 +17,6 @@
 
 <?php require_once 'navbar.php'?>
 
-</div>
 <div class="container-fluid container-md d-flex min-vh-100 justify-content-center align-items-center">
     <form action="" method="post" class="w-100 p-5 bg-dark rounded-4 shadow-lg" style="max-width: 624px">
         <?php if(!empty($err)):?>
@@ -43,16 +42,5 @@
     </form>
 </div>
 
-<footer class="bg-dark py-5 mt-5">
 
-    <div class="container text-light text-center">
-        <p>&copy; 2024 Copyright by FitForge. All rights reserved.</p>
-    </div>
-</footer>
-
-
-
-
-
-</body>
-</html>
+<?php require_once 'footer.php';
