@@ -5,17 +5,11 @@ class ApiController extends Controller
 
     public function index()
     {
-        
+
     }
+
     public function exercises()
     {
-
-        if ($_SESSION['type'] !== 'admin') {
-            echo json_encode(['error' => 'Unauthorized']);
-            http_response_code(401);
-            exit();
-        }
-
         $exercise = new Exercise();
         $exercises = $exercise->findAll();
 
@@ -24,17 +18,20 @@ class ApiController extends Controller
 
     public function publicWorkouts()
     {
+        $query = $_GET['query'] ?? '';
+        $category = $_GET['category'] ?? '';
 
-        if ($_SESSION['type'] !== 'admin') {
-            echo json_encode(['error' => 'Unauthorized']);
-            http_response_code(401);
-            exit();
+        try {
+
+            $trainings = new Training();
+            $workouts = $trainings->findAllPublicSearchWithJoins('public', $query, $category);
+
+            header('Content-Type: application/json');
+            echo json_encode($workouts, JSON_THROW_ON_ERROR);
+
+        } catch (PDOException $e) {
+            echo json_encode(['error' => $e->getMessage()]);
         }
-
-        $training = new Training();
-        $trainings = $training->where(['privacy' => 'public']);
-
-        echo json_encode(['trainings' => $trainings], JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT);
     }
 
 }

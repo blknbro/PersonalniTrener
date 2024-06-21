@@ -20,6 +20,11 @@
                         <a class="nav-link" href="<?= ROOT ?>/admin">Admin</a>
                     </li>
                 <?php endif; ?>
+                <?php if (isset($_SESSION['type']) && !empty($_SESSION['type']) ): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= ROOT ?>/trainings/my">My workouts</a>
+                    </li>
+                <?php endif; ?>
             </ul>
             <div class="navbar-nav ms-auto">
                 <?php

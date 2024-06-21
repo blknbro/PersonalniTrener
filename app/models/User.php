@@ -121,4 +121,10 @@ class User extends Model
 
     }
 
+    public function findAllNonAdmin(): bool|array
+    {
+        return $this->query("SELECT * FROM $this->table WHERE NOT type = 'admin'");
+
+    }
+
 }

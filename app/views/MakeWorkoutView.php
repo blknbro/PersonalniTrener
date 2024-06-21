@@ -97,7 +97,6 @@ require_once 'navbar.php' ?>
 
 <script>
     const ROOT_URL = '<?= ROOT ?>'
-    console.log(ROOT_URL)
 </script>
 <script src="<?=ROOT?>/assets/scripts/makeWork.js">
 </script>

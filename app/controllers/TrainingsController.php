@@ -9,7 +9,9 @@ class TrainingsController extends Controller
         $data['username'] = empty($_SESSION['email']) ? "Guest" : $_SESSION["email"];
 
         $training = new Training();
-        $data['info'] = $training->findAllWithJoins();
+        $category = new Category();
+        $data['categories'] = $category->findAll();
+        $data['info'] = $training->findAllPublicWithJoins('public');
 
 
         $this->view('Trainings', $data);
@@ -74,6 +76,28 @@ class TrainingsController extends Controller
         $data['categories'] = $category->findAll();
         $data['errors'] = $category->errors;
         $this->view('MakeWorkout', $data);
+
+    }
+
+
+    public function my()
+    {
+        if (!isset($_SESSION['type']))
+            redirect('home');
+        elseif ($_SESSION['type'] === 'admin')
+            redirect('home');
+        $data['username'] = empty($_SESSION['email']) ? "Guest" : $_SESSION["email"];
+
+        $training = new Training();
+
+        if(isset($_POST['remove']) && $_POST['remove'] === 'true'){
+            $training->delete($_POST['workout_id'],'workout_id');
+        }
+
+        $data['workouts'] = $training->findAllPrivateWithJoins($_SESSION['userId']);
+
+
+        $this->view('MyWorkouts', $data);
 
     }
 

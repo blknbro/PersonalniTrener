@@ -25,6 +25,27 @@ class Training extends Model
         return $this->query($query);
     }
 
+    public function findAllPublicWithJoins($privacy): bool|array
+    {
+
+        $query = "SELECT w.workout_id,title,description,u.name,surname,email,duration_value,duration_unit,c.name AS category_name FROM $this->table w INNER JOIN users u ON w.id = u.id INNER JOIN category c ON c.category_id = w.category_id WHERE w.privacy = :privacy";
+        return $this->query($query,['privacy' => $privacy]);
+    }
+
+    public function findAllPublicSearchWithJoins($privacy,$searchQuery,$category): bool|array
+    {
+
+        $query = "SELECT w.workout_id,title,description,u.name,surname,email,duration_value,duration_unit,c.name AS category_name FROM $this->table w INNER JOIN users u ON w.id = u.id INNER JOIN category c ON c.category_id = w.category_id WHERE (w.privacy = :privacy) AND (w.title LIKE :query OR w.description LIKE :query) AND (:category = '' OR c.name = :category)";
+        return $this->query($query,['privacy' => $privacy, 'query' => "%". $searchQuery ."%", 'category' => $category]);
+    }
+
+    public function findAllPrivateWithJoins($id)
+    {
+
+        $query = "SELECT w.workout_id,title,description,u.name,surname,email,duration_value,duration_unit,c.name AS category_name FROM $this->table w INNER JOIN users u ON w.id = u.id INNER JOIN category c ON c.category_id = w.category_id WHERE w.id = :id";
+        return $this->query($query,['id' => $id]);
+    }
+
     public function findWhereIdWithJoinsDetailed(int $id)
     {
 
