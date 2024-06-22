@@ -8,7 +8,8 @@ require_once 'navbar.php' ?>
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>View</th>
+                        <th></th>
+                        <th></th>
                         <th>Title</th>
                         <th>Workout category</th>
                         <th>Duration</th>
@@ -26,6 +27,8 @@ require_once 'navbar.php' ?>
                     <tr>
                         <td><a href="<?= ROOT ?>/trainings/workout?id=<?= $workout['workout_id'] ?>"
                                class="btn btn-info btn-sm text-light">Visit</a></td>
+                        <td><a href="<?= ROOT ?>/trainings/edit?id=<?= $workout['workout_id'] ?>"
+                               class="btn btn-success btn-sm text-light">Edit</a></td>
                         <td><?= $workout['title'] ?></td>
                         <td><?= $workout['category_name'] ?></td>
                         <td><?= $workout['duration_value'] . " " . $workout['duration_unit'] ?></td>

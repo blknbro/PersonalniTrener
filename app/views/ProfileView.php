@@ -45,7 +45,7 @@
                 </div>
                 <div class="d-flex flex-column fs-4">
                     <strong>Bio:</strong>
-                    <p><?= htmlspecialchars($info[0]['bio']) ?></p>
+                    <p class="p-3 "><?= nl2br(htmlspecialchars($info[0]['bio'])) ?></p>
                 </div>
             </div>
             <div class="col-md-4">

@@ -2,7 +2,7 @@
 
 class TrainingsController extends Controller
 {
-    public function index()
+    public function index(): void
     {
         if (!isset($_SESSION['type']))
             redirect('home');
@@ -18,7 +18,7 @@ class TrainingsController extends Controller
 
     }
 
-    public function workout()
+    public function workout(): void
     {
         $data['username'] = empty($_SESSION['email']) ? "Guest" : $_SESSION["email"];
 
@@ -30,7 +30,7 @@ class TrainingsController extends Controller
 
     }
 
-    public function make()
+    public function make(): void
     {
         $data['username'] = empty($_SESSION['email']) ? "Guest" : $_SESSION["email"];
 
@@ -80,7 +80,7 @@ class TrainingsController extends Controller
     }
 
 
-    public function my()
+    public function my(): void
     {
         if (!isset($_SESSION['type']))
             redirect('home');
@@ -90,14 +90,119 @@ class TrainingsController extends Controller
 
         $training = new Training();
 
-        if(isset($_POST['remove']) && $_POST['remove'] === 'true'){
-            $training->delete($_POST['workout_id'],'workout_id');
+        if (isset($_POST['remove']) && $_POST['remove'] === 'true') {
+            $training->delete($_POST['workout_id'], 'workout_id');
         }
 
         $data['workouts'] = $training->findAllPrivateWithJoins($_SESSION['userId']);
 
 
         $this->view('MyWorkouts', $data);
+
+    }
+
+
+    public function edit(): void
+    {
+        $data['username'] = empty($_SESSION['email']) ? "Guest" : $_SESSION["email"];
+
+        $category = new Category();
+        $exercises = new Exercise();
+        $workout = new Training();
+        $workoutExercises = new WorkoutExercises();
+        $user = new User();
+
+        if (!$workout->where(['id' => $_SESSION['userId']]))
+            redirect('home');
+
+
+        if (!empty($_POST)) {
+
+            $workoutData = $workout->where(['workout_id' => $_POST['workout_id']])[0];
+            $oldCategoryName = $category->where(['category_id' => $workoutData['category_id']])[0]['name'];
+            $oldExercises = $workoutExercises->where(['workout_id' => $_POST['workout_id']]);
+
+
+            $originalValuesWorkout = [
+                'title' => $workoutData['title'],
+                'description' => $workoutData['description'],
+                'category_id' => $oldCategoryName,
+                'duration_value' => $workoutData['duration_value'],
+                'duration_unit' => $workoutData['duration_unit'],
+                'privacy' => $workoutData['privacy'],
+            ];
+
+            $originalValuesWorkoutExercises = [
+                'exercises' => [],
+                'days_of_week' => [],
+            ];
+
+            foreach ($oldExercises as $oldExercise) {
+                $originalValuesWorkoutExercises['exercises'][] = $exercises->where(['exercise_id' => $oldExercise['exercise_id']])[0]['title'];
+            }
+
+            foreach ($oldExercises as $oldExercise) {
+                $originalValuesWorkoutExercises['days_of_week'][] = $oldExercise['day_of_week'];
+            }
+
+
+            $updatedValuesWorkout = [
+                'title' => $_POST['title'],
+                'description' => $_POST['description'],
+                'category_id' => $_POST['category'],
+                'duration_value' => (int)$_POST['duration_value'],
+                'duration_unit' => $_POST['duration_unit'],
+                'privacy' => $_POST['privacy'],
+            ];
+
+            $updatedValuesWorkoutExercises = [
+                'exercises' => $_POST['exercises'],
+                'days_of_week' => $_POST['days_of_week'],
+            ];
+
+            $changesWorkout = [];
+            $changesWorkoutExercises = [];
+            foreach ($originalValuesWorkout as $key => $oldValue) {
+                if ($oldValue !== $updatedValuesWorkout[$key]) {
+                    $changesWorkout[$key] = $updatedValuesWorkout[$key];
+                }
+            }
+            foreach ($originalValuesWorkoutExercises as $key => $oldValue) {
+                if ($oldValue !== $updatedValuesWorkoutExercises[$key]) {
+                    $changesWorkoutExercises[$key] = $updatedValuesWorkoutExercises[$key];
+                }
+            }
+
+
+
+
+
+            if (!empty($changesWorkout)) {
+                $categoryId = $category->where(['name' => $updatedValuesWorkout['category_id']])[0]['category_id'];
+                $changesWorkout['category_id'] = $categoryId;
+                $workout->update($_POST['workout_id'],$changesWorkout,'workout_id');
+            }
+
+            if(!empty($changesWorkoutExercises)){
+                $workoutExercises->delete($_POST['workout_id'],'workout_id');
+                foreach ($_POST['exercises'] as $index => $exerciseTitle) {
+                    $dayOfWeek = $_POST['days_of_week'][$index];
+                    $exerciseId = $exercises->where(['title' => $exerciseTitle])[0]['exercise_id'];
+                    $workoutExercises->insert(['workout_id' => $_POST['workout_id'], 'exercise_id' => $exerciseId, 'day_of_week' => $dayOfWeek]);
+                }
+            }
+
+            $data['succ'] = 'success';
+
+        }
+        $data['workout'] = $workout->where(['workout_id' => $_GET['id']]);
+        $data['exercises'] = $exercises->findAll();
+        $data['categories'] = $category->findAll();
+        $data['workoutExercises'] = $workoutExercises->where(['workout_id' => $_GET['id']]);
+
+
+        $this->view('EditWorkout', $data);
+
 
     }
 

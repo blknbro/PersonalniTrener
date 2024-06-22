@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 `<option class="text-dark" value="${exercise.title}">${exercise.title}</option>`
             ).join('');
 
-            // Adds initial exercise group
-            addExerciseGroup(exercisesOptionsHTML);
 
             // Adds exercise group on button click
             addExerciseBtn.addEventListener('click', function () {
@@ -45,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     exercisesContainer.addEventListener('click', function (event) {
         if (event.target && event.target.classList.contains('remove-exercise')) {
-            event.target.parentElement.parentElement.remove();
+            event.target.closest('.exercise-group').remove();
         }
     });
 });
