@@ -32,6 +32,13 @@ function createToken(int $length): ?string
     }
 }
 
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
 function sendMail(string $email, string $action, $token)
 {
     $mail = new PHPMailer(true);

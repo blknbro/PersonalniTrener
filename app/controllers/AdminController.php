@@ -15,9 +15,14 @@ class AdminController extends Controller
         $exercises = new Exercise();
         $users = new User();
 
-//        if(isset($_POST['remove']) && $_POST['remove'] === 'true'){
-//            $categories->delete($_POST['category_id'],'category_id');
-//        }
+
+        if(isset($_POST['removeCategory']) && $_POST['removeCategory'] === 'true'){
+            $categories->delete($_POST['category_id'],'category_id');
+        }
+
+        if(isset($_POST['removeExercise']) && $_POST['removeExercise'] === 'true'){
+            $exercises->delete($_POST['exercise_id'],'exercise_id');
+        }
 
 
         if(isset($_POST['approve']) && $_POST['approve'] === 'yes'){
