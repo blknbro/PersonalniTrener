@@ -88,10 +88,6 @@ require_once 'navbar.php' ?>
                 </div>
             </form>
         </div>
-        <div class="ms-md-5">
-            <img src="<?= ROOT ?>/assets/images/Trainers/jenna.jpg" class="img-fluid img-thumbnail" alt="JENNA"
-                 style="max-height: 600px;">
-        </div>
     </div>
 </div>
 

@@ -1,3 +1,46 @@
+
+document.getElementById('workoutForm').addEventListener('submit', function(event) {
+    const title = document.getElementById('title').value.trim();
+    const description = document.getElementById('description').value.trim();
+    const durationValue = document.getElementById('duration_value').value;
+    const durationUnit = document.getElementById('unit').value;
+    let errorMessage = '';
+
+    if (!title) {
+        errorMessage += 'Title is required.<br>';
+    }
+
+    if (!description) {
+        errorMessage += 'Description is required.<br>';
+    }
+
+    if (!durationValue || isNaN(durationValue) || durationValue < 1 || durationValue > 50) {
+        errorMessage += 'Duration value must be a number between 1 and 50.<br>';
+    }
+
+    if (durationUnit === 'none') {
+        errorMessage += 'Duration unit must be selected.<br>';
+    }
+
+    if (errorMessage) {
+        event.preventDefault();
+        const alertDiv = document.createElement('div');
+        alertDiv.className = 'alert alert-danger';
+        alertDiv.innerHTML = errorMessage;
+
+        const form = document.getElementById('workoutForm');
+        const existingAlert = form.querySelector('.alert');
+        if (existingAlert) {
+            existingAlert.remove();
+        }
+
+        form.insertBefore(alertDiv, form.firstChild);
+    }
+});
+
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const exercisesContainer = document.getElementById('exercisesContainer');
     const addExerciseBtn = document.getElementById('addExerciseBtn');
@@ -47,5 +90,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-
 

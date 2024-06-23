@@ -50,13 +50,16 @@ class TrainingsController extends Controller
             if ($_POST['duration_unit'] === 'none' || empty($_POST['title']) || empty($_POST['description']) || empty($_POST['privacy']))
                 $category->errors['duration_unit'] = 'Please fill out the form.';
             else {
+                $image = ['1.jpg', 'gym1.jpg', 'jump.jpg', 'weight.jpg'];
+                $randomKey = array_rand($image);
+                $workoutImage = $image[$randomKey];
                 $title = trim($_POST['title']);
                 $description = trim($_POST['description']);
                 $durationV = $_POST['duration_value'];
                 $durationU = $_POST['duration_unit'];
                 $userId = $_SESSION['userId'];
                 $privacy = $_POST['privacy'];
-                $workout->insert(['title' => $title, 'description' => $description, 'duration_value' => $durationV, 'duration_unit' => $durationU, 'id' => $userId, 'category_id' => $categoryId, 'privacy' => $privacy]);
+                $workout->insert(['title' => $title, 'description' => $description, 'duration_value' => $durationV, 'duration_unit' => $durationU, 'id' => $userId, 'category_id' => $categoryId, 'privacy' => $privacy, 'workout_image' => $workoutImage]);
 
 
                 $findAll = $workout->findAll();

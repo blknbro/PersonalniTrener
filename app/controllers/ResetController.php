@@ -7,7 +7,7 @@ class ResetController extends Controller
         $data = [];
 
         if (isset($_SESSION['email']))
-            redirect("Home");
+            redirect("home");
 
 
         if (isset($_GET['token'])) {

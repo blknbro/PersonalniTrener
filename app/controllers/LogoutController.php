@@ -11,6 +11,10 @@ class LogoutController extends Controller
             unset($_SESSION['userId']);
         if(!empty($_SESSION["type"]))
             unset($_SESSION['type']);
+        if(!empty($_SESSION["name"]))
+            unset($_SESSION['name']);
+        if(!empty($_SESSION["permission"]))
+            unset($_SESSION['permission']);
         redirect("home");
     }
 

@@ -15,9 +15,9 @@ function fetchCategories() {
             return response.json();
         })
         .then(data => {
-            console.log('Data received:', data); // Log the received data
+            console.log('Data received:', data);
             const tableBody = document.querySelector('#categoryTable tbody');
-            tableBody.innerHTML = ''; // Clear existing table rows
+            tableBody.innerHTML = '';
 
             data.category.forEach(category => {
                 const row = `
@@ -58,7 +58,7 @@ function fetchExercises() {
         })
         .then(data => {
             const exerciseTableBody = document.getElementById('exerciseTableBody');
-            exerciseTableBody.innerHTML = ''; // Clear existing table rows
+            exerciseTableBody.innerHTML = '';
 
             data.exercises.forEach(exercise => {
                 const row = `
@@ -120,7 +120,7 @@ document.getElementById('saveCategoryButton').addEventListener('click', function
                         modalBackdrop.remove();
                     }
                 } else {
-                    // If modal instance is not found (possibly not initialized yet), create new instance
+
                     const modalInstance = new bootstrap.Modal(modalElement);
                     modalInstance.hide();
                     const modalBackdrop = document.querySelector('.modal-backdrop');
@@ -143,7 +143,7 @@ document.getElementById('saveExerciseButton').addEventListener('click', function
     const form = document.getElementById('addExerciseForm');
     const formData = new FormData(form);
 
-    // Validate form data if needed
+
     const exerciseTitle = formData.get('exerciseTitle');
     const exerciseDesc = formData.get('exerciseDesc');
     const duration = formData.get('exerciseDuration');
@@ -198,14 +198,14 @@ document.getElementById('saveExerciseButton').addEventListener('click', function
                         modalBackdrop.remove();
                     }
                 }
-                location.reload(); // Reload the page after successful addition (you might want to handle this differently)
+                location.reload();
             } else {
-                alert('Failed to add exercise. Please try again.'); // Display error message if addition failed
+                alert('Failed to add exercise. Please try again.');
             }
         })
         .catch(error => {
             console.error('Error adding exercise:', error);
-            alert('An error occurred. Please try again.'); // Display generic error message
+            alert('An error occurred. Please try again.');
         });
 });
 

@@ -19,7 +19,7 @@
 </head>
 <body>
 
-<?php require_once 'navbar.php'?>
+<?php require_once 'navbar.php' ?>
 
 <div class="container d-flex flex-column flex-wrap justify-content-start min-vh-100 mt-5" style="padding-top: 64px">
     <h1 class="text-center text-dark">OUR TRAINERS</h1>
@@ -28,7 +28,14 @@
         <?php foreach ($info as $trainer): ?>
 
             <div class="card train" style="width: 18rem;">
-                <img src="<?= ROOT ?>/assets/images/Trainers/jenna.jpg" class="trainer-img" alt="3">
+                <img
+                    <?php
+                    if (empty($trainer['profile_image'])): ?>
+                        src="<?=ROOT?>/assets/images/Profile/default.jpg"
+                    <?php else: ?>
+                        src="<?= ROOT ?>/assets/images/Profile/<?= $trainer['profile_image'] ?>"
+                    <?php endif; ?>
+                        class="trainer-img" alt="3">
                 <div class="card-body text-center">
                     <h5 class="card-title"><?= $trainer['name'] ?></h5>
                     <p class="card-text text-dark"><?= substr($trainer['bio'], 0, strpos($trainer['bio'], '.') + 1) ?></p>

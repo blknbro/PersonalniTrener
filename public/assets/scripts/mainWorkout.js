@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="card train train-hover shadow" style="width: 18rem; text-decoration: none;">
                     <a href="${ROOT_URL}/trainings/workout?id=${workout.workout_id}">
                         <img
-                            src="https://images.unsplash.com/photo-1470468969717-61d5d54fd036?q=80&w=1944&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            src="${ROOT_URL}/assets/images/Train/${workout.workout_image}"
                             class="card-img-top train-img" alt="text">
                         <div class="card-body">
                             <h2 class="text-center text-dark">${workout.title}</h2>

@@ -18,7 +18,7 @@
 <?php require_once 'navbar.php'?>
 
 <div class="container d-flex min-vh-100 justify-content-center align-items-center">
-        <form action="" method="post" class="w-100 p-5 mt-5 bg-dark rounded-4 shadow" style="max-width: 624px">
+        <form action="" method="post" class="w-100 p-5 mt-5 bg-dark rounded-4 shadow" style="max-width: 624px" id="registerForm">
             <?php if(!empty($err)):?>
             <div class="alert alert-danger">
                 <?=
@@ -64,5 +64,8 @@
             </div>
         </form>
     </div>
+
+<script src="<?= ROOT ?>/assets/scripts/register.js"></script>
+
 
 <?php require_once 'footer.php';

@@ -22,6 +22,7 @@ class User extends Model
         'tokenRExpire',
         'bio',
         'permission',
+        'profile_image'
     ];
 
     /**Validate register data

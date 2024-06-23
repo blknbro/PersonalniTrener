@@ -16,6 +16,7 @@ class Training extends Model
         'id',
         'category_id',
         'privacy',
+        'workout_image'
     ];
 
     public function findAllWithJoins()
@@ -35,7 +36,7 @@ class Training extends Model
     public function findAllPublicSearchWithJoins($privacy,$searchQuery,$category): bool|array
     {
 
-        $query = "SELECT w.workout_id,title,description,u.name,surname,email,duration_value,duration_unit,c.name AS category_name FROM $this->table w INNER JOIN users u ON w.id = u.id INNER JOIN category c ON c.category_id = w.category_id WHERE (w.privacy = :privacy) AND (w.title LIKE :query OR w.description LIKE :query) AND (:category = '' OR c.name = :category)";
+        $query = "SELECT w.workout_id,w.workout_image,title,description,u.name,surname,email,duration_value,duration_unit,c.name AS category_name FROM $this->table w INNER JOIN users u ON w.id = u.id INNER JOIN category c ON c.category_id = w.category_id WHERE (w.privacy = :privacy) AND (w.title LIKE :query OR w.description LIKE :query) AND (:category = '' OR c.name = :category)";
         return $this->query($query,['privacy' => $privacy, 'query' => "%". $searchQuery ."%", 'category' => $category]);
     }
 

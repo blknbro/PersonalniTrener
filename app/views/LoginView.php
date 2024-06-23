@@ -4,7 +4,7 @@ require_once 'navbar.php' ?>
 
 </div>
 <div class="container-fluid container-md d-flex min-vh-100 justify-content-center align-items-center flex-column">
-    <form action="" method="post" class="w-100 p-5 bg-dark rounded-4 shadow-lg" style="max-width: 624px">
+    <form action="" method="post" class="w-100 p-5 bg-dark rounded-4 shadow-lg" style="max-width: 624px" id="loginForm">
         <?php if (!empty($err)): ?>
             <div class="alert alert-danger">
                 <?=
@@ -33,5 +33,7 @@ require_once 'navbar.php' ?>
         </div>
     </form>
 </div>
+
+    <script src="<?= ROOT ?>/assets/scripts/login.js"></script>
 
 <?php require_once 'footer.php'?>
