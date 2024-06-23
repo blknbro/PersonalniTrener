@@ -7,8 +7,8 @@ require_once 'navbar.php' ?>
         <h1 class="my-5 text-center">Admin Dasboard</h1>
 
         <div class="mb-4 text-center">
-            <button class="btn btn-primary" onclick="showSection('categories')">Categories</button>
-            <button class="btn btn-primary" onclick="showSection('exercises')">Exercises</button>
+            <button class="btn btn-primary me-2" onclick="showSection('categories')">Categories</button>
+            <button class="btn btn-primary me-2" onclick="showSection('exercises')">Exercises</button>
             <button class="btn btn-primary" onclick="showSection('users')">Users</button>
         </div>
 
@@ -17,97 +17,105 @@ require_once 'navbar.php' ?>
         <!--Categories table-->
 
         <div id="categories" class="hidden">
-            <h2 class="text-dark">Workout Categories</h2>
+            <h2 class="text-dark mb-3">Workout Categories</h2>
             <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Add New
                 Category
             </button>
-            <table id="categoryTable" class="table table-striped">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Category Name</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
+            <div class="table-responsive">
+                <table id="categoryTable" class="table table-striped table-hover">
+                    <thead>
+                    <tr class="text-center">
+                        <th>ID</th>
+                        <th>Category Name</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
 
         <!--Exercises table-->
 
         <div id="exercises" class="hidden">
-            <h2 class="text-dark">Exercises</h2>
+            <h2 class="text-dark mb-3">Exercises</h2>
             <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addExerciseModal">Add New
                 Exercise
             </button>
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Exercise Name</th>
-                    <th>Duration (minutes)</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody id="exerciseTableBody">
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr class="text-center">
+                        <th>ID</th>
+                        <th>Exercise Name</th>
+                        <th>Duration (minutes)</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="exerciseTableBody">
+                    </tbody>
+                </table>
+            </div>
         </div>
 
 
         <!--Users table-->
 
         <div id="users" class="hidden">
-            <h2 class="text-dark">Registered Users</h2>
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name Surname</th>
-                    <th>Email</th>
-                    <th>Account type</th>
-                    <th>Permission granted</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php foreach ($users as $user): ?>
-                    <tr>
-                        <td><?= $user['id'] ?></td>
-                        <td><?= $user['name'] . " " . $user['surname'] ?></td>
-                        <td><?= $user['email'] ?></td>
-                        <td><?= $user['type'] ?></td>
-                        <td><?= $user['permission'] ?></td>
-                        <td>
-                            <form method="post">
-                                <input type="hidden" name="userId" value="<?= $user['id'] ?>">
-                                <?php if ($user['type'] === 'trainer' && $user['permission'] === 'none'): ?>
-                                    <button class="btn btn-secondary btn-sm" type="submit" name="approve" value="yes">
-                                        Approve
-                                    </button>
-                                <?php elseif ($user['type'] === 'trainer' && $user['permission'] === 'blocked'): ?>
-                                    <button class="btn btn-secondary btn-sm" type="submit" name="approve" value="yes">
-                                        Re-approve
-                                    </button>
-                                <?php endif; ?>
-                                <?php if ($user['permission'] === 'none' || $user['permission'] === 'approved'): ?>
-                                    <button class="btn btn-secondary btn-sm" type="submit" name="block" value="yes">
-                                        Block
-                                    </button>
-                                <?php elseif ($user['permission'] === 'blocked'): ?>
-                                    <button class="btn btn-success btn-sm" type="submit" name="none" value="yes">
-                                        Unblock
-                                    </button>
-                                <?php endif; ?>
-                            </form>
-                        </td>
+            <h2 class="text-dark mb-3">Registered Users</h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr class="text-center">
+                        <th>ID</th>
+                        <th>Name Surname</th>
+                        <th>Email</th>
+                        <th>Account type</th>
+                        <th>Permission granted</th>
+                        <th>Actions</th>
                     </tr>
-                <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($users as $user): ?>
+                        <tr class="text-center">
+                            <td><?= $user['id'] ?></td>
+                            <td><?= $user['name'] . " " . $user['surname'] ?></td>
+                            <td><?= $user['email'] ?></td>
+                            <td><?= $user['type'] ?></td>
+                            <td><?= $user['permission'] ?></td>
+                            <td>
+                                <form method="post">
+                                    <input type="hidden" name="userId" value="<?= $user['id'] ?>">
+                                    <?php if ($user['type'] === 'trainer' && $user['permission'] === 'none'): ?>
+                                        <button class="btn btn-secondary btn-sm" type="submit" name="approve"
+                                                value="yes">
+                                            Approve
+                                        </button>
+                                    <?php elseif ($user['type'] === 'trainer' && $user['permission'] === 'blocked'): ?>
+                                        <button class="btn btn-secondary btn-sm" type="submit" name="approve"
+                                                value="yes">
+                                            Re-approve
+                                        </button>
+                                    <?php endif; ?>
+                                    <?php if ($user['permission'] === 'none' || $user['permission'] === 'approved'): ?>
+                                        <button class="btn btn-secondary btn-sm" type="submit" name="block" value="yes">
+                                            Block
+                                        </button>
+                                    <?php elseif ($user['permission'] === 'blocked'): ?>
+                                        <button class="btn btn-success btn-sm" type="submit" name="none" value="yes">
+                                            Unblock
+                                        </button>
+                                    <?php endif; ?>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

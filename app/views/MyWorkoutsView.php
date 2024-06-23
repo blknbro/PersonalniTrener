@@ -3,11 +3,13 @@ require_once 'head.php';
 require_once 'navbar.php' ?>
     <div class="container d-flex flex-column justify-content-start min-vh-100 mt-5" style="padding-top: 64px">
 
+            <h1 class="text-center text-dark">Your Workout plans</h1>
         <div class="container d-flex gap-4 flex-wrap mt-5 justify-content-start ">
             <?php if (!empty($workouts)): ?>
+            <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th></th>
                         <th></th>
                         <th>Title</th>
@@ -24,7 +26,7 @@ require_once 'navbar.php' ?>
 
                     as $workout): ?>
 
-                    <tr>
+                    <tr class="text-center">
                         <td><a href="<?= ROOT ?>/trainings/workout?id=<?= $workout['workout_id'] ?>"
                                class="btn btn-info btn-sm text-light">Visit</a></td>
                         <td><a href="<?= ROOT ?>/trainings/edit?id=<?= $workout['workout_id'] ?>"
@@ -45,6 +47,7 @@ require_once 'navbar.php' ?>
                     </tbody>
                     <?php endforeach; ?>
                 </table>
+            </div>
             <?php else: ?>
                 <p style="font-size: 46px; color: black; margin-top: 80px; text-align: center">Seems like u haven't made any workout plan.</p>
             <?php endif; ?>

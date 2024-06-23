@@ -21,14 +21,14 @@ function fetchCategories() {
 
             data.category.forEach(category => {
                 const row = `
-                    <tr>
+                    <tr class="text-center">
                         <td>${category.category_id}</td>
                         <td>${category.name}</td>
-                        <td>
-                            <a href="${ROOT_URL}/edit/category?id=${category.category_id}" class="btn btn-warning btn-sm edit-category">
+                        <td class="text-center">
+                            <a href="${ROOT_URL}/edit/category?id=${category.category_id}" class="btn btn-warning btn-sm text-light edit-category">
                                 Edit
                             </a>
-                            <form method="post" class="remove">
+                            <form method="post" class="remove mt-2">
                                 <input type="hidden" name="category_id" value="${category.category_id}">
                                 <button class="btn btn-danger btn-sm" type="submit" name="removeCategory" value="true">
                                     Remove
@@ -62,15 +62,15 @@ function fetchExercises() {
 
             data.exercises.forEach(exercise => {
                 const row = `
-                    <tr>
+                    <tr class="text-center">
                         <td>${exercise.exercise_id}</td>
                         <td>${exercise.title}</td>
                         <td>${exercise.duration}</td>
-                        <td>
-                            <a href="${ROOT_URL}/edit/exercise?id=${exercise.exercise_id}" class="btn btn-warning btn-sm">
+                        <td class="text-center">
+                            <a href="${ROOT_URL}/edit/exercise?id=${exercise.exercise_id}" class="btn btn-warning text-light btn-sm">
                                 Edit
                             </a>
-                            <form method="post" class="remove">
+                            <form method="post" class="remove mt-2">
                                 <input type="hidden" name="exercise_id" value="${exercise.exercise_id}">
                                 <button class="btn btn-danger btn-sm" type="submit" name="removeExercise" value="true">
                                     Remove
