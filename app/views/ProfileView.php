@@ -67,8 +67,13 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <img src="<?=ROOT?>/assets/images/profile/<?=$info[0]['profile_image']?>" class="img-fluid img-thumbnail" alt="JENNA"
-                     style="width: 100%; height: auto; max-height: 600px;">
+                <img <?php
+                if (empty($info[0]['profile_image'])): ?>
+                    src="<?= ROOT ?>/assets/images/Profile/default.jpg"
+                <?php else: ?>
+                    src="<?= ROOT ?>/assets/images/Profile/<?= $info[0]['profile_image'] ?>"
+                <?php endif; ?> class="img-fluid img-thumbnail" alt="JENNA"
+                                style="width: 100%; height: auto; max-height: 600px;">
             </div>
         </div>
     <?php else: ?>
@@ -142,7 +147,13 @@
                 </form>
             </div>
             <div class="ms-md-5">
-                <img src="<?=ROOT?>/assets/images/profile/<?=$info[0]['profile_image']?>" class="img-fluid img-thumbnail" alt="JENNA"
+                <img <?php
+                if (empty($info[0]['profile_image'])): ?>
+                    src="<?= ROOT ?>/assets/images/Profile/default.jpg"
+                <?php else: ?>
+                    src="<?= ROOT ?>/assets/images/Profile/<?= $info[0]['profile_image'] ?>"
+                <?php endif; ?>
+                     class="img-fluid img-thumbnail" alt="JENNA"
                      style="max-height: 600px;">
             </div>
         </div>
